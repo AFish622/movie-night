@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Comic Neue', cursive;
 }
 
 .hidden {
@@ -7,29 +8,42 @@
 }
 
 h1 {
-    color: red;
+    font-family: 'Amatic SC', cursive;
+    color: #DC1A37;
     text-align: center;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    font-size: 52px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .search-label {
     display: block;
-    margin-left: 37%;
     padding-top: 1%;
-    font-size: 25px;
+    font-size: 28px;
+    color: #bfb;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .form-container{
-    border: 1px solid black;
-    width: 50%;
-    height: 200px;
+    width: 76%;
+    height: 100px;
     margin-right: auto;
     margin-left: auto;
 }
 
-input[type="text"] {
-    width: 50%;
-    margin-left: 20%;
-    margin-top: 10%;
+.inner-form-container {
+    text-align: center;
+    border: 1px solid #bfb;
+    margin: 1%;
+}
+
+input[type="text"].search-text {
+    width: 75%;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 18px;
+    border: 2px solid #bfb;
 }
 
 .search-form {
@@ -39,7 +53,7 @@ input[type="text"] {
 
 .display-container {
     width: 75%;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -53,6 +67,7 @@ div.content {
     position: relative;
     font-size: 20px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 a {
@@ -60,8 +75,13 @@ a {
     color: black;
 }
 
-.title-link {
-    cursor: pointer;
+a:hover {
+    text-decoration: underline;
+}
+
+.detail-labels {
+    font-weight: bold;
+    margin-bottom: -2%;
 }
 
 .movie-poster:hover {
@@ -80,7 +100,6 @@ a {
 
 .poster-image {
     position: relative;
-    /* left: 60%; */
     top: 10px;
 }
 
@@ -93,12 +112,85 @@ ul {
     list-style: none;
 }
 
-li {
-    border: 1px solid black;
-}
-
 td {
     padding: 60px;
     border: 1px solid black;
 }
 
+.large-details-container {
+    border: 2px solid black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-details-container {
+    border-bottom: 1px solid black;
+    width:100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.bottom-left-container {
+    border-top: 1px solid black;
+    border-right: 3px solid black;
+    width: 40.5%;
+    display: inline-block;
+    text-align: center;
+}
+
+.bottom-right-container {
+    width: 59.5%;
+    float: right;
+    display: inline-block;
+    padding: 2%;
+    border-top: 1px solid black;
+}
+
+.top-details-container li {
+    display: inline-block;
+}
+
+.movie-name-details {
+    font-size: 28px;
+    float: left;
+}
+
+.movie-year-details {
+    font-size: 28px;
+    margin-right: 65%;
+}
+
+.movie-rating-details {
+    font-size: 25px;
+    float: right;
+    margin-right: 4%;
+}
+
+.details-bottom-row {
+    float: left;
+    font-size: 22px;
+    margin-bottom: 1%;
+}
+
+input[type="submit"].search-submit {
+    width: 12%;
+    height: 40px;
+    background-color:#bfb;
+    border-color: #4c4;
+    border: 2px solid #444;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 2%;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+body {
+    background-color: #0300AB;
+}
+
+.outer-content {
+    /* background-color:#bfb; */
+    padding: 1%;
+}
