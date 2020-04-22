@@ -1,22 +1,17 @@
 'use strict';
 
 const movieSearchUrl = 'https://api.themoviedb.org/3/search/movie?api_key=8be83258e748b34e88ad002fbe336cd4&query=';
-
-
 const posterBaseUrl = 'http://image.tmdb.org/t/p/w185/';
-
 const movieIdUrl = 'https://api.themoviedb.org/3/movie/'
-
 const movieIdBaseUrl = 'https://api.themoviedb.org/3/movie/';
 const movieApiKey = '?api_key=8be83258e748b34e88ad002fbe336cd4&append_to_response=release_dates';
-
-const movieCreditsUrl = 'https://api.themoviedb.org/3/movie/2300/credits?api_key=8be83258e748b34e88ad002fbe336cd4'
+const movieCreditsEndpoint = '/credits?api_key=8be83258e748b34e88ad002fbe336cd4'
 
 
 function waitForClickOnSubmit() {
     $('.search-form').submit(function(event) {
         $('.large-details-container').addClass('hidden');
-        $('.content').removeClass('hidden');
+        $('.outer-content').removeClass('hidden');
         $('.content').html('<p></p>')
         event.preventDefault();
         $('.display-container').removeClass('hidden')
@@ -37,23 +32,23 @@ function appendMovieData(data) {
         let moviePosterUrl = movie.poster_path;
         if (moviePosterUrl === null) {
             return `<tr class="row">
-                        <td data-movieid="${movieId}">
+                        <td class="left-data" data-movieid="${movieId}">
                             <p class="movie-title"><a href="#">${movie.title}</a></p>
                             <p class="release-date">${releaseDate}</p>
                             <p>${movie.overview}</p>
                         </td> 
-                        <td data-movieid="${movieId}"><img class="stock-img movie-poster" src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6" alt=""></td>
+                        <td class="right-data" data-movieid="${movieId}"><img class="stock-img poster-image movie-poster" src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6" alt=""></td>
                     </tr>`
         }
 
         else {
             return `<tr class="row">
-                        <td data-movieid="${movieId}">
+                        <td class="left-data" data-movieid="${movieId}">
                             <p class="movie-title"><a href="#">${movie.title}</a></p>
                             <p class="release-date">${releaseDate}</p>
                             <p>${movie.overview}</p>
                         </td> 
-                        <td data-movieid="${movieId}"><img class="poster-image movie-poster" src="${posterBaseUrl + movie.poster_path}" alt=""></td>
+                        <td class="right-data" data-movieid="${movieId}"><img class="poster-image movie-poster" src="${posterBaseUrl + movie.poster_path}" alt=""></td>
                     </tr>`
         }
     }));
@@ -63,7 +58,7 @@ function appendMovieData(data) {
 function clickOnMovieTitle() {
     $('.content').on('click', '.row', function(event) {
         event.preventDefault();
-        $('.content').addClass('hidden')
+        $('.outer-content').addClass('hidden')
         let clickedMovieId = $(event.target).closest('td').data('movieid');
         getMovieDetails(clickedMovieId)
     })
@@ -71,6 +66,7 @@ function clickOnMovieTitle() {
 
 function getMovieDetails(movieId) {
     let urlMovieApi = movieIdBaseUrl + movieId + movieApiKey;
+    let movieCreditsUrl = movieIdBaseUrl + movieId + movieCreditsEndpoint;
     $.when($.getJSON(urlMovieApi), $.getJSON(movieCreditsUrl)).done(function(movieData, creditData) {
         let movieDetailsData = movieData[0];
         let movieCreditData = creditData[0];
@@ -89,13 +85,13 @@ function getMovieDetails(movieId) {
         
         handleMovieDetails(movieObj)
     })
-    // $.getJSON(urlMovieApi, handleMovieDetails);
 }
 
 function handleMovieDetails(movie) {
     $('.large-details-container').removeClass('hidden');
     let largeMoviePoster = 'http://image.tmdb.org/t/p/w342/' + movie.poster;
-    let movieCast = movie.cast.slice(0, 10).map(function(people) {
+    let movieCast = movie.cast.slice(0, 19).map(function(people) {
+        console.log('cast', people)
         return ' <a href="#"> ' + people.name + '</a>'
     });
     let releaseYear = movie.releaseDate.slice(0, 4)
@@ -116,7 +112,7 @@ function handleMovieDetails(movie) {
                     <ul class="details-top-row">
                         <li class="movie-name-details"><a href="">${movie.title}</a></li>
                         <li class="movie-year-details">${releaseYear}</li>
-                        <li class="movie-rating-details">${movie.rating}</li>
+                        <li class="movie-rating-details">Fan Rating: ${movie.rating}</li>
                     </ul>
                     <ul class="details-bottom-row">
                         <li class="movie-runtime-details">Runetime: ${runtime}min</li>

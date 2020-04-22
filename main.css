@@ -36,10 +36,11 @@ h1 {
     text-align: center;
     border: 1px solid #bfb;
     margin: 1%;
+    border-radius: 5px;
 }
 
 input[type="text"].search-text {
-    width: 75%;
+    width: 74.5%;
     border-radius: 5px;
     height: 40px;
     font-size: 18px;
@@ -58,14 +59,17 @@ input[type="text"].search-text {
     margin-left: auto;
 }
 
-div.content {
+.content {
     display: inline-block;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .movie-title {
     display: inline-block;
     position: relative;
-    font-size: 20px;
+    font-size: 30px;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -96,11 +100,13 @@ a:hover {
     color: red;
     position: relative;
     bottom: 30px;
+    font-size: 30px;
 }
 
 .poster-image {
     position: relative;
     top: 10px;
+    border: 1px solid
 }
 
 .stock-img {
@@ -113,15 +119,34 @@ ul {
 }
 
 td {
+    background-color: #F8F8F8;
     padding: 60px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-spacing: 1em;
+}
+
+
+.left-data {
+    border-left: 2px solid black;
+}
+
+.right-data {
+    border-right: 2px solid black;
+}
+
+.row {
+    border-radius: 5px;
 }
 
 .large-details-container {
     border: 2px solid black;
-    width: 80%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5%;
+    border-radius: 5px;
+    margin-bottom: 6%;
 }
 
 .top-details-container {
@@ -129,6 +154,7 @@ td {
     width:100%;
     display: inline-block;
     text-align: center;
+    background-color: #bfb;
 }
 
 .bottom-left-container {
@@ -137,6 +163,7 @@ td {
     width: 40.5%;
     display: inline-block;
     text-align: center;
+    background-color: #F8F8F8;
 }
 
 .bottom-right-container {
@@ -145,6 +172,8 @@ td {
     display: inline-block;
     padding: 2%;
     border-top: 1px solid black;
+    background-color: #F8F8F8;
+    height: 518px;
 }
 
 .top-details-container li {
@@ -165,6 +194,8 @@ td {
     font-size: 25px;
     float: right;
     margin-right: 4%;
+    position: relative;
+    bottom: 33px;
 }
 
 .details-bottom-row {
@@ -191,6 +222,22 @@ body {
 }
 
 .outer-content {
-    /* background-color:#bfb; */
-    padding: 1%;
+    background-color:#bfb;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    margin-top: 6%;
+}
+
+table {
+    border-collapse: collapse;
+    /* border-collapse:separate;  */
+    border-spacing:5em; 
+}
+
+.checked {
+    color:red;
+}
+.unchecked {
+    color:white;
 }
