@@ -5,7 +5,8 @@ const posterBaseUrl = 'http://image.tmdb.org/t/p/w185/';
 const movieIdUrl = 'https://api.themoviedb.org/3/movie/'
 const movieIdBaseUrl = 'https://api.themoviedb.org/3/movie/';
 const movieApiKey = '?api_key=8be83258e748b34e88ad002fbe336cd4&append_to_response=release_dates';
-const movieCreditsEndpoint = '/credits?api_key=8be83258e748b34e88ad002fbe336cd4'
+const movieCreditsEndpoint = '/credits?api_key=8be83258e748b34e88ad002fbe336cd4';
+const stockImage = 'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6';
 
 
 function waitForClickOnSubmit() {
@@ -37,7 +38,8 @@ function appendMovieData(data) {
                             <p class="release-date">${releaseDate}</p>
                             <p>${movie.overview}</p>
                         </td> 
-                        <td class="right-data" data-movieid="${movieId}"><img class="stock-img poster-image movie-poster" src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6" alt=""></td>
+const stockImage = 'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6';
+<td class="right-data" data-movieid="${movieId}"><img class="stock-img poster-image movie-poster" src="${stockImage}" alt=""></td>
                     </tr>`
         }
 
@@ -89,9 +91,15 @@ function getMovieDetails(movieId) {
 
 function handleMovieDetails(movie) {
     $('.large-details-container').removeClass('hidden');
-    let largeMoviePoster = 'http://image.tmdb.org/t/p/w342/' + movie.poster;
+    let largeMoviePoster;
+    if (movie.poster == null) {
+        largeMoviePoster = stockImage;
+    }
+    else {
+        largeMoviePoster = 'http://image.tmdb.org/t/p/w342/' + movie.poster;
+    }
+    // let largeMoviePoster = 'http://image.tmdb.org/t/p/w342/' + movie.poster;
     let movieCast = movie.cast.slice(0, 19).map(function(people) {
-        console.log('cast', people)
         return ' <a href="#"> ' + people.name + '</a>'
     });
     let releaseYear = movie.releaseDate.slice(0, 4)
@@ -121,7 +129,7 @@ function handleMovieDetails(movie) {
                     </ul>
                 </div>
                 <div class="bottom-left-container">
-                    <img src="${largeMoviePoster}" alt="">
+                    <img class="large-poster" src="${largeMoviePoster}" alt="">
                 </div>
                 <div class="bottom-right-container">
                     <p class="detail-labels">Overview:</p>
