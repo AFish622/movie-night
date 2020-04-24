@@ -50,11 +50,12 @@ input[type="text"].search-text {
 .search-form {
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 4%;
 }
 
 .display-container {
     width: 75%;
-    margin-top: 3%;
+    margin-top: 8%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -85,7 +86,7 @@ a:hover {
 
 .detail-labels {
     font-weight: bold;
-    margin-bottom: -2%;
+    margin-bottom: -2.5%;
 }
 
 .movie-poster:hover {
@@ -121,8 +122,8 @@ ul {
 td {
     background-color: #F8F8F8;
     padding: 60px;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
     border-spacing: 1em;
 }
 
@@ -217,6 +218,14 @@ input[type="submit"].search-submit {
     font-size: 20px;
 }
 
+input[type="submit"].search-submit:hover {
+    background-color: red;
+}
+
+input[type="submit"].search-submit:focus {
+    border: 2px dashed #444;
+}
+
 body {
     background-color: #0300AB;
 }
@@ -226,12 +235,11 @@ body {
     border-radius: 5px;
     border: 1px solid black;
     text-align: center;
-    margin-top: 6%;
+    margin-top: 9%;
 }
 
 table {
     border-collapse: collapse;
-    /* border-collapse:separate;  */
     border-spacing:5em; 
     border-radius: 5px;
 }
@@ -247,4 +255,12 @@ table {
     margin-bottom: -1%;
     height: 513px;
     width: 342px;
+}
+
+.error-message {
+    font-size: 22px;
+    color: red;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Amatic SC', cursive;
+    margin-top: -5%;
 }

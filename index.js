@@ -17,10 +17,21 @@ function waitForClickOnSubmit() {
         event.preventDefault();
         $('.display-container').removeClass('hidden')
         let searchTerm = $('.search-form').find('input[name="search"').val();
+        if (searchTerm === '') {
+            handleNoSearch()
+        }
+        else {
+            $('.error-message').addClass('hidden')
+            sendMovieRequest(searchTerm);
+        }
         $('.search-form').find('input[name="search"').val('')
-        sendMovieRequest(searchTerm);
     })
 };
+
+function handleNoSearch() {
+    $('.outer-content').addClass('hidden');
+    $('.error-message').removeClass('hidden');
+}
 
 function sendMovieRequest(movie) {
     $.getJSON(movieSearchUrl + movie, appendMovieData)
